@@ -31,9 +31,9 @@ const obtenerJoyas = async (req, res) => {
             fix = Math.abs(page-1);
         }
     
-        console.log(fix);
+        //console.log(fix);
         const offset = (fix * limits);
-        console.log(offset);
+        //console.log(offset);
         const consulta = format("SELECT * FROM inventario ORDER BY %s %s LIMIT %s OFFSET %s", campo, direccion, limits, offset);
         const result = await pool.query(consulta);
         const joyas = result.rows;
