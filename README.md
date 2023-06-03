@@ -81,4 +81,6 @@ DB_NAME=joyas
 
 El servidor utiliza un middleware como capa de reporte en cada una de las rutas. Esto permite imprimir información detallada de cada solicitud recibida.
 
-Además, se utiliza `try...catch` para capturar posibles errores durante una consulta o la lógica de cada ruta.
+### try-catch
+
+Se utiliza `try...catch` para manejar errores y excepciones de manera controlada.
