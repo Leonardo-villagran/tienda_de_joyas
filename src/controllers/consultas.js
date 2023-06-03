@@ -16,11 +16,24 @@ const pool = new Pool({
 // Función para obtener joyas de una base de datos, aplicando restricciones a través de solicitudes desde el cliente con respecto a límite, orden y página de los distintos objetos almacenados.  
 const obtenerJoyas = async (req, res) => {
     try {
-        const { limits = 10, order_by = "id_ASC", page = 0 } = req.query;
+        const { limits = 10, order_by = "id_ASC", page = 1 } = req.query;
 
         const [campo, direccion] = order_by.split("_");
-        const offset = page * limits;
-
+        
+        let fix;
+        if (!page){
+            fix = 0;
+        }
+        else if (page==0){
+            fix = 0;
+        }
+        else{
+            fix = Math.abs(page-1);
+        }
+    
+        console.log(fix);
+        const offset = (fix * limits);
+        console.log(offset);
         const consulta = format("SELECT * FROM inventario ORDER BY %s %s LIMIT %s OFFSET %s", campo, direccion, limits, offset);
         const result = await pool.query(consulta);
         const joyas = result.rows;

@@ -8,7 +8,7 @@ API para gestionar joyas. Permite obtener información sobre las joyas disponibl
 
 - Node.js y npm instalados en el sistema.
 - PostgreSQL instalado y configurado.
-- Archivo `.env` con las siguientes variables de entorno configuradas:
+- Archivo `.env` con las siguientes variables de entorno para conectar a la base de datos:
 
 ```
 DB_HOST=localhost
@@ -18,17 +18,20 @@ DB_PASSWORD=postgres
 DB_NAME=joyas
 ```
 
+Nota: Dado que esto es un desarrollo de prueba, se suben las variables de entorno al repositorio. Sin embargo, en caso de realizar un deploy en producción, no se realizaría esta acción.  
+
 ## Instalación
 
 1. Clona este repositorio: `git clone https://github.com/Leonardo-villagran/tienda_de_joyas`
 2. Ve al directorio del proyecto: `cd tienda_de_joyas`
 3. Instala las dependencias: `npm install`
 
-
 ## Uso
 
 1. Inicia el servidor: `npm run dev`
 2. Realiza las solicitudes HTTP a través de la API utilizando las rutas y métodos disponibles.
+3. De forma local la ruta inicial corresponde a `http://localhost:3000`, la cual no posee una solicitud de acceso. Para obtener datos de la API, revisar la sección de rutas disponibles.   
+4. El puerto está definido como 3000, pero se puede cambiar a través de variable de entorno llamada `PORT`.
 
 ### Rutas disponibles
 
