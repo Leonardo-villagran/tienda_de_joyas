@@ -39,7 +39,9 @@ const obtenerJoyas = async (req, res) => {
         const joyas = result.rows;
 
         const HATEOAS = await prepararHATEOAS(joyas);
+
         res.json(HATEOAS);
+        
     } catch (error) {
         console.log("Error al obtener las joyas");
         res.status(500).json({ error: "Error al obtener las joyas" });
@@ -50,8 +52,8 @@ const obtenerJoya = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const consulta = format("SELECT * FROM inventario WHERE id = %s", id);
-        const result = await pool.query(consulta);
+        const consulta = "SELECT * FROM inventario WHERE id = $1";
+        const result = await pool.query(consulta,[id]);
         const joya = result.rows[0];
 
         if (!joya) {
