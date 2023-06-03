@@ -79,8 +79,14 @@ DB_NAME=joyas
 
 ### Middlewares
 
-El servidor utiliza un middleware como capa de reporte en cada una de las rutas. Esto permite imprimir información detallada de cada solicitud recibida.
+El servidor utiliza un middleware como capa de reporte en cada una de las rutas. Esto permite imprimir información detallada de cada solicitud recibida en la consola del backend. Se agrega al reporte: 
 
+  -La URL original de la solicitud.
+  -El método de la solicitud (GET, POST, etc.).
+  -La ruta de la solicitud.
+  -Los parámetros de la solicitud en formato JSON.
+  -Los parámetros de query string de la solicitud en formato JSON.
+  
 ### try-catch
 
 Se utiliza `try...catch` para manejar errores y excepciones de manera controlada.
