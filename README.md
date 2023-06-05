@@ -28,7 +28,7 @@ Nota: Dado que esto es un desarrollo de prueba, se suben las variables de entorn
 
 ## Uso
 
-1. Inicia el servidor: `npm run dev`
+1. Inicia el servidor: `npm run dev` o `npm run start`
 2. Realiza las solicitudes HTTP a través de la API utilizando las rutas y métodos disponibles.
 3. De forma local la ruta inicial corresponde a `http://localhost:3000`, la cual no posee una solicitud de acceso. Para obtener datos de la API, revisar la sección de rutas disponibles.   
 4. El puerto está definido como 3000, pero se puede cambiar a través de variable de entorno llamada `PORT`.
@@ -37,7 +37,7 @@ Nota: Dado que esto es un desarrollo de prueba, se suben las variables de entorn
 
 - `GET /joyas`: Obtiene la estructura HATEOAS de todas las joyas almacenadas en la base de datos. Permite la paginación y ordenamiento mediante los siguientes parámetros de query string:
   - `limits`: Limita la cantidad de joyas a devolver por página.
-  - `page`: Define la página con joyas que debe ser mostrada.
+  - `page`: Define la página con joyas que debe ser mostrada (iniciando desde 1). 
   - `order_by`: Ordena las joyas según el valor de este parámetro. Puede ser uno de los siguientes valores:
     - `id_ASC`: Orden ascendente por ID.
     - `id_DESC`: Orden descendente por ID.
@@ -77,9 +77,8 @@ Nota: Dado que esto es un desarrollo de prueba, se suben las variables de entorn
   - Ejemplo de ruta para filtrar las joyas por diferentes criterios:
     ```
         - GET /joyas/filtros?precio_max=10000&categoria=anillo&metal=oro
-        - Esta ruta filtra las joyas con un precio máximo de 1000 y pertenecientes a la categoría "anillos".
+        - Esta ruta filtra las joyas con un precio máximo de 1000, pertenecientes a la categoría "anillos" y metal de tipo "oro".
     ```
-
 ### Middlewares
 
 El servidor utiliza un middleware como capa de reporte en cada una de las rutas. Esto permite imprimir información detallada de cada solicitud recibida en la consola del backend. Se agrega al reporte: 
