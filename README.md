@@ -8,7 +8,7 @@ API para gestionar joyas. Permite obtener información sobre las joyas disponibl
 
 - Node.js y npm instalados en el sistema.
 - PostgreSQL instalado y configurado.
-- Generar archivo  `.env` en la raíz del código con las siguientes variables de entorno para conectar a la base de datos:
+- Generar archivo  `.env` en la raíz del código, con las siguientes variables de entorno, para conectar a la base de datos:
 
 ```
 ##Config localhost
