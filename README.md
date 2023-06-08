@@ -11,15 +11,13 @@ API para gestionar joyas. Permite obtener información sobre las joyas disponibl
 - Generar archivo  `.env` en la raíz del código con las siguientes variables de entorno para conectar a la base de datos:
 
 ```
+##Config localhost
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=postgres
 DB_NAME=joyas
 ```
-
-Nota: Dado que esto es un desarrollo de prueba, se suben las variables de entorno al repositorio. Sin embargo, en caso de realizar un deploy en producción, no se realizaría esta acción.  
-
 ## Instalación
 
 1. Clona este repositorio: `git clone https://github.com/Leonardo-villagran/tienda_de_joyas`
