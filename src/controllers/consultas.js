@@ -20,17 +20,12 @@ const obtenerJoyas = async (req, res) => {
 
         const [campo, direccion] = order_by.split("_");
         
+        //Bloque que permite que la página 1 sea la primera, al igual que la página 0. También transforma las páginas con valor negativo a positivo. 
         let fix;
-        if (!page){
-            fix = 0;
-        }
-        else if (page==0){
-            fix = 0;
-        }
-        else{
-            fix = Math.abs(page-1);
-        }
-    
+        if (!page) fix = 0;
+        else if (page==0) fix = 0;
+        else fix = Math.abs(page)-1;
+        
         //console.log(fix);
         const offset = (fix * limits);
         //console.log(offset);
@@ -131,13 +126,16 @@ const prepararHATEOAS = (joyas) => {
 // Middleware para registrar información de las solicitudes recibidas
 const reportMiddleware = (req, res, next) => {
     try {
+        fecha=new Date().toLocaleString('es-Es');
         console.log(`---------------------`);
         console.log(`SOLICITUD DESDE LA WEB`);
         console.log('Url original:', req.hostname);
         console.log(`Solicitud recibida: ${req.method}`);
         console.log(`Ruta: ${req.path}`);
-        console.log('req.params:', JSON.stringify(req.params, null, 2));
-        console.log('req.query: ', JSON.stringify(req.query, null, 2));
+        console.log("Fecha: ",fecha);
+        if (Object.keys(req.params).length > 0) console.log('req.params:', JSON.stringify(req.params, null, 2));
+        if (Object.keys(req.query).length > 0) console.log('req.query: ', JSON.stringify(req.query, null, 2));
+        
         console.log(`---------------------`);
         next();
     } catch (error) {
@@ -145,6 +143,5 @@ const reportMiddleware = (req, res, next) => {
         res.status(500).json({ error: "Error al obtener al realizar el reporte." });
     }
 };
-
 // Exportar las funciones para ser utilizadas por otros módulos
 module.exports = { obtenerJoyas, obtenerJoyasPorFiltro, obtenerJoya, reportMiddleware };
